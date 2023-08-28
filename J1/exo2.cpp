@@ -16,7 +16,6 @@ int get_beverage()
     std::cout << "Enter the number of the desired beverage" << std::endl;
     std::cin >> choice;
     return choice;
-    
 }
 
 float get_money()
@@ -95,8 +94,6 @@ int main()
             {
                 break;
             }
-
-            
         }
         
     }
