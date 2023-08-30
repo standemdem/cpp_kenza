@@ -13,27 +13,24 @@ public:
 };
 
 class Rectangle : public Forme {
-private:
-    float largeur;
-    float longueur;
 
 public:
-    Rectangle(float largeur, float longueur){
-        this->largeur = largeur;
-        this->longueur = longueur;
+    Rectangle(float _largeur, float _longueur){
+        largeur = _largeur;
+        longueur = _longueur;
     }
-
 
     float aire(){
         return largeur * longueur;
     }
 
+private:
+    float largeur;
+    float longueur;
+
 }; 
 
 class Cercle : public Forme {
-private:
-    float rayon;
-    float pi = M_PI;
 
 public:
     Cercle(float rayon){
@@ -43,6 +40,10 @@ public:
     float aire(){
         return pi * rayon * rayon;
     }
+
+private:
+    float rayon;
+    float pi = M_PI;
 };
 
 
