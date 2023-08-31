@@ -31,7 +31,7 @@ int main(){
     } else {
         cout << "Erreur à l'ouverture du fichier" << endl;
     }
-    getline(meteo, ligne)
+    getline(meteo, ligne);
 
 
     for (int i = 0; i < 13; i++)
