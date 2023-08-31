@@ -29,6 +29,7 @@ void copieChaine(const char *source, char *destination){
         destination++;
         source++;
     }
+    *destination = '\0';
     cout << endl;
 }
 // https://h-deb.clg.qc.ca/Sujets/Divers--cplusplus/CPP--Tableaux-2D.html 
