@@ -81,9 +81,9 @@ private:
 };
 
 
-class Pigeonauzorus : public CreatureMythique {
+class PigeonauzorusRex : public CreatureMythique {
 public:
-    Pigeonauzorus(string nom, double taille, string pouvoir, string cri)
+    PigeonauzorusRex(string nom, double taille, string pouvoir, string cri)
     :CreatureMythique(nom, taille, pouvoir){
         this->cri = cri;
     }
@@ -93,7 +93,7 @@ public:
         cout << cri << endl;
     }
 
-    ~Pigeonauzorus(){
+    ~PigeonauzorusRex(){
         // CreatureMythique::~CreatureMythique();
         cout << "###################################" << endl;
         cout << "I'll be back with even more swag !" << endl;
@@ -107,7 +107,7 @@ int main()
 {
     Serpigeon crea1("Serpico", 0.5, "Empoisonne ses victimes par laché de guano", 42);
     PigeonGarou crea2("Garourou", 2.2, "Se transforme les soirs de pleines lune", true);
-    Pigeonauzorus crea3("Pigzilla", 59, "Vole malgrè ses ailes minuscules", "Pousse un roucoulement terrible" );
+    PigeonauzorusRex crea3("Pigzilla", 59, "Vole malgrè ses ailes minuscules", "Pousse un roucoulement terrible" );
     crea1.afficherDetails();
     crea2.afficherDetails();
     crea2.setLune();
