@@ -1,9 +1,6 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
-
-
 class CreatureMythique {
 public:
     CreatureMythique(string _nom, double _taille, string _pouvoir){
@@ -16,19 +13,17 @@ public:
         cout << "###################################" << endl;
         cout << "nom : " << nom << endl;
         cout << "taille : " << taille << " metre" << endl;
-        cout << "pouvoir : " << pouvoir << endl;
-        
-
+        cout << "pouvoir : " << pouvoir << endl;   
     }
-    ~CreatureMythique()
-        {
+
+    ~CreatureMythique(){
             cout << this->nom << " a été détruit" << endl;
         }
+
 private:
     string nom;
     double taille;
-    string pouvoir;
-    
+    string pouvoir;    
 };
 
 class Serpigeon : public CreatureMythique {
