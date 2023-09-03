@@ -151,6 +151,20 @@ int main(){
             break;
         }
         fichier3.close();
+        // Génération du fichier 4
+        if(fichier4.is_open()){
+            fichier4 << "CXX = g++\n"
+            << "CXXFLAGS = -std=c++11 -Wall\n\n"
+            << "all: " << nom_fichier << "\n\n"
+            << nom_fichier << ": " << firstMaj(nom_fichier) <<".cpp main.cpp\n\t"
+            <<"$(CXX) $(CXXFLAGS) -o " << nom_fichier << ' ' 
+            << firstMaj(nom_fichier) <<".cpp main.cpp\n\n"
+            << "clean:\n\t"
+            << "rm -f " << nom_fichier << "\n\t";
+
+        }else{
+            cout << "Impossible d'ouvrir le fichier";
+        }
     }   
     return 0;
 }
