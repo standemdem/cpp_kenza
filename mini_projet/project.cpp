@@ -88,5 +88,25 @@ int main(){
         }
         fichier1.close();
     }
+    if(fichier3.is_open()){
+        while(true){
+            fichier3<< "#include " << "\"" << nom_fichier 
+            << ".h\"" << '\n'
+            << "#include <iostream>" << '\n'
+            << '\n'
+            << "int main() {" << '\n'
+            << '\t' << nametoupper(nom_fichier) << " obj;\n";
+            for(string elem : attributes){
+                fichier3 << "\tobj.set" << nametoupper(elem) <<"(42);\n";
+            }
+            for(string elem : attributes){
+                fichier3 <<"\tstd::cout << " << "\"" << nametoupper(elem)
+                << " = \" << obj.get" << nametoupper(elem) << "() << std::endl;" << '\n';
+            }
+            fichier3 << '\n' <<"return 0;\n}";            
+            break;
+        }
+        fichier3.close();
+    }   
     return 0;
 }

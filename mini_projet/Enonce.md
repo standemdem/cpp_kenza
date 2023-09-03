@@ -81,7 +81,9 @@ void MyClass::setValue2(int value2) {
 ```cpp
 
 // Exemple de fichier main (main.cpp)
-#include "MyClass.h"#include <iostream>int main() {
+#include "MyClass.h"
+#include <iostream>
+int main() {
     MyClass obj;
     obj.setValue1(42);
     obj.setValue2(56);

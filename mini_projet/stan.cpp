@@ -1,22 +1,22 @@
 #include "stan.h"
 
 Stan::Stan() {
-	bonjour = 0;
-	aurevoir = 0;
+	a = 0;
+	b = 0;
 }
-Stan::Stan(int bonjour, int aurevoir) {
-	 this->bonjour = bonjour;
-	 this->aurevoir = aurevoir;
+Stan::Stan(int a, int b) {
+	 this->a = a;
+	 this->b = b;
 }
-int Stan::getBonjour() const {
-	return bonjour;
+int Stan::getA() const {
+	return a;
 }
-int Stan::getAurevoir() const {
-	return aurevoir;
+int Stan::getB() const {
+	return b;
 }
-void Stan::setBonjour(int bonjour) {
-	this->bonjour = bonjour;
+void Stan::setA(int a) {
+	this->a = a;
 }
-void Stan::setAurevoir(int aurevoir) {
-	this->aurevoir = aurevoir;
+void Stan::setB(int b) {
+	this->b = b;
 }
