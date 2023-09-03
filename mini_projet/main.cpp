@@ -1,12 +1,20 @@
-#include "stan.h"
-#include <iostream>
+#ifndef STAN_H
+#define STAN_H
 
-int main() {
-	Stan obj;
-	obj.setA(42);
-	obj.setB(42);
-	std::cout << "A = " << obj.getA() << std::endl;
-	std::cout << "B = " << obj.getB() << std::endl;
+class Stan {
+public:
+	Stan();
+	Stan(int a, int b);
 
-return 0;
-}
+	int getA() const;
+	void setA(int a);
+	int getB() const;
+	void setB(int b);
+	
+
+private:
+	int a;
+	int b;
+};
+
+#endif
