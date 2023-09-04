@@ -16,7 +16,7 @@ string firstMaj(string str){
 string fullMin(string str){
     string chaineFullMin;
     for(int i=0 ; str[i] !='\0';i++)
-        chaineFullMin += _tolower(str[i]);
+        chaineFullMin += tolower(str[i]);
     return chaineFullMin;
 }
 
@@ -25,7 +25,7 @@ void createGetters(ofstream *fichier, vector<string> attributes, string classNam
         *fichier << '\n';
     }else{
         for(string attribute: attributes){
-            *fichier << "int " << className << "::get" 
+            *fichier << "\tint " << className << "::get" 
             << firstMaj(attribute) << "() const {"
             << '\n' << '\t'
             << "return " << attribute << ';' << '\n'
@@ -39,7 +39,7 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
         *fichier << '\n';
     }else{
         for(string attribute: attributes){
-            *fichier << "void " << className << "::set" 
+            *fichier << "\tvoid " << className << "::set" 
             << firstMaj(attribute) << "(int " 
             << attribute
             << ") {"

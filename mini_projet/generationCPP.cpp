@@ -13,7 +13,7 @@ void generationCPP(string nom_fichier, vector<string> &attributes){
 
         while (cin >> attribute && (attribute !="end")){
             if(regex_match(attribute, pattern)){
-           // attribute = fullMin(attribute);
+            attribute = fullMin(attribute);
             attributes.push_back(attribute);
             cin.clear();
             cin.ignore();

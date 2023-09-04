@@ -18,7 +18,7 @@ void generationH(string nom_fichier,vector<string> &attributes)
                     fichier2 << "int " << elem;
                 }
             }
-            fichier2 << ");\n\n\t";
+            fichier2 << ");\n\n";
         }
         createGetters(&fichier2, attributes, firstMaj(nom_fichier));
         createSetters(&fichier2, attributes, firstMaj(nom_fichier));
