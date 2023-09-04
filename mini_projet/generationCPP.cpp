@@ -3,13 +3,13 @@
 void generationCPP(string nom_fichier, vector<string> &attributes){
     
     ofstream fichier1(nom_fichier+".cpp"); 
+    string attribute;
 
     if(fichier1.is_open()){
         fichier1<< "#include " << "\"" << nom_fichier 
         << ".h\"" << endl;
         fichier1 << endl;
         fichier1 << firstMaj(nom_fichier) << "::" << firstMaj(nom_fichier) <<"() {" << endl;
-        string attribute;
         cout << "Entrez les attributs (finissez par \"end\"): ";
         while (cin >> attribute && (attribute !="end")){
             attributes.push_back(attribute);
