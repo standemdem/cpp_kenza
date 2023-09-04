@@ -5,9 +5,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <regex>
 
 using namespace std;
 
+string fullMin(string str);
 string fullMaj(string str);
 string firstMaj(string str);
 void createGetters(ofstream *fichier, vector<string> attributes, string className);
