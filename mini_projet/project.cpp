@@ -42,19 +42,47 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
     }
 }
 
-int main(){
-    string nom_fichier;
-    vector<string> attributes;
+void generationH(string nom_fichier,vector<string> &attributes)
+{
+    ofstream fichier2(nom_fichier+".h"); 
+    if(fichier2.is_open()){
+        fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " << fullMaj(nom_fichier) << "_H\n\n"
+        << "class "<< firstMaj(nom_fichier) << " {\npublic:\n\t" 
+        << firstMaj(nom_fichier) <<"();\n\t" << firstMaj(nom_fichier)
+        << "(" ;
+
+        
+        for(string elem : attributes){
+            if(attributes.back()!=elem){
+                fichier2 << "int " << elem << ", ";
+            }else{
+                fichier2 << "int " << elem;
+            }
+        }
+        fichier2 << ");\n\n\t";
+
+
+        for(string elem : attributes){
+            fichier2 << "int get"<< firstMaj(elem) << "() const;\n\tvoid set" 
+            << firstMaj(elem)<< "(int " << elem<<");\n\t" ;
+        }
+        fichier2 << "\n\nprivate:";
+        for(string elem : attributes){
+            fichier2 << "\n\tint "<< elem << ";"; 
+        }
+        fichier2 << "\n};\n\n#endif";
+    }
+    else
+        cout << "Impossible d'ouvrir le fichier\n";
+
+    fichier2.close();
+}
+
+
+void generationCPP(string nom_fichier, vector<string> &attributes){
     
-    // Generation des fichiers
-    cout << "Entrez un nom de fichier"<< endl;
-    getline(cin, nom_fichier);
-    ofstream fichier1(nom_fichier+".cpp"); //1
-    ofstream fichier2(nom_fichier+".h"); //2
-    ofstream fichier3("main.cpp"); //3
-    ofstream fichier4("Makefile"); //4
-    
-    // Generation fichier .cpp
+    ofstream fichier1(nom_fichier+".cpp"); 
+
     if(fichier1.is_open()){
         fichier1<< "#include " << "\"" << nom_fichier 
         << ".h\"" << endl;
@@ -92,41 +120,11 @@ int main(){
         
         fichier1.close();
     }
-    // Generation fichier .h
+}
+
+void generationMain(string nom_fichier,vector<string> &attributes){
     
-    if(fichier2.is_open()){
-        fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " << fullMaj(nom_fichier) << "_H\n\n"
-        << "class "<< firstMaj(nom_fichier) << " {\npublic:\n\t" 
-        << firstMaj(nom_fichier) <<"();\n\t" << firstMaj(nom_fichier)
-        << "(" ;
-
-        
-        for(string elem : attributes){
-            if(attributes.back()!=elem){
-                fichier2 << "int " << elem << ", ";
-            }else{
-                fichier2 << "int " << elem;
-            }
-        }
-        fichier2 << ");\n\n\t";
-
-
-        for(string elem : attributes){
-            fichier2 << "int get"<< firstMaj(elem) << "() const;\n\tvoid set" 
-            << firstMaj(elem)<< "(int " << elem<<");\n\t" ;
-        }
-        fichier2 << "\n\nprivate:";
-        for(string elem : attributes){
-            fichier2 << "\n\tint "<< elem << ";"; 
-        }
-        fichier2 << "\n};\n\n#endif";
-    }
-    else
-        cout << "Impossible d'ouvrir le fichier\n";
-
-    fichier2.close();
-    
-    // Generation fichier main.cpp
+    ofstream fichier3("main.cpp");
     if(fichier3.is_open()){
         fichier3<< "#include " << "\"" << nom_fichier 
         << ".h\"" << '\n'
@@ -143,8 +141,11 @@ int main(){
         }
         fichier3 << '\n' <<"return 0;\n}";            
         fichier3.close();
+    }
+}
 
-        // Génération du fichier 4
+void generationMakefile(string nom_fichier, vector<string> &attributes){
+        ofstream fichier4("Makefile");
         if(fichier4.is_open()){
             fichier4 << "CXX = g++\n"
             << "CXXFLAGS = -std=c++11 -Wall\n\n"
@@ -164,6 +165,18 @@ int main(){
         }else{
             cout << "Impossible d'ouvrir le fichier";
         }
-    }   
+    
+}
+int main(){
+    string nom_fichier;
+    vector<string> attributes;
+    cout << "Entrez un nom de fichier"<< endl;
+    getline(cin, nom_fichier);
+    
+    generationCPP(nom_fichier,attributes);
+    generationH(nom_fichier,attributes);
+    generationMain(nom_fichier,attributes);
+    generationMakefile(nom_fichier,attributes);
+  
     return 0;
 }
