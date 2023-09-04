@@ -13,6 +13,13 @@ string firstMaj(string str){
     return temp;
 }
 
+string fullMin(string str){
+    string chaineFullMin;
+    for(int i=0 ; str[i] !='\0';i++)
+        chaineFullMin += _tolower(str[i]);
+    return chaineFullMin;
+}
+
 void createGetters(ofstream *fichier, vector<string> attributes, string className){
     if(attributes.empty()){
         *fichier << '\n';
