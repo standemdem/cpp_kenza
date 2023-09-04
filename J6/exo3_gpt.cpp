@@ -68,7 +68,7 @@ int main() {
     Matrice m;
 
     // Saisie et affichage de la matrice
-    cin >> m;
+    m >> cin;
     cout << "La matrice saisie est : " << endl;
     m.operator<<(cout); // Utilisation de l'opérateur << pour l'affichage
     cout << endl;

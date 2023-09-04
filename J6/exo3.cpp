@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -40,8 +41,25 @@ public:
     }
 
     //Opérateur de conversion de type
-
-
+    operator string() const {
+        stringstream ss;
+        for (int i = 0; i < ma_matrice.size(); i++)
+        {
+            ss<< "[";
+            for (int j = 0; j < ma_matrice.size(); j++)
+            {
+                ss << ma_matrice[i][j];
+                if(j<2){
+                    ss << ",";
+                }
+            }
+            ss<< "]";
+            if(i<2){
+                ss <<",";
+            }
+        }
+        return ss.str();   
+    }
 };
 
 int main(){
@@ -53,5 +71,9 @@ int main(){
     cout << "Affichage de la matrice"<<endl;
     m1.operator<<(std::cout);
     cout << m1(1,3)<<endl;
+
+     // Conversion de la matrice en chaîne de caractères
+    string str_m = static_cast<string>(m1);
+    cout << "La matrice en chaîne de caractères est : " << str_m << endl;
     return 0;
 }
