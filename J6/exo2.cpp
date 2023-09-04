@@ -25,13 +25,13 @@ public:
 
     bool operator!=(Rectangle& autreRect){
         // "différents";
-        return (surface != autreRect.surface);
+        return !(*this == autreRect);
     }
 };
 
 int main(){
     Rectangle rec1(2,7);
-    Rectangle rec2(2,7);
+    Rectangle rec2(2,8);
     bool egal = (rec1 == rec2);
     bool diff = (rec1 != rec2);
     cout << "les rectangles sont ils égaux? " << (egal ? "Yes" : "No") << endl;
