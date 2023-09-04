@@ -44,13 +44,11 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
 
 int main(){
     string nom_fichier;
-    string nom_fichier_maj;
     vector<string> attributes;
     
     // Generation des fichiers
     cout << "Entrez un nom de fichier"<< endl;
     getline(cin, nom_fichier);
-    nom_fichier_maj = firstMaj(nom_fichier);
     ofstream fichier1(nom_fichier+".cpp"); //1
     ofstream fichier2(nom_fichier+".h"); //2
     ofstream fichier3("main.cpp"); //3
@@ -58,49 +56,46 @@ int main(){
     
     // Generation fichier .cpp
     if(fichier1.is_open()){
-        while(true){
-            fichier1<< "#include " << "\"" << nom_fichier 
-            << ".h\"" << endl;
-            fichier1 << endl;
-            fichier1 << nom_fichier_maj << "::" << nom_fichier_maj <<"() {" << endl;
-            string attribute;
-            cout << "Entrez les attributs (finissez par \"end\"): ";
-            while (cin >> attribute && (attribute !="end")){
-                attributes.push_back(attribute);
-                cout<<attribute;
-                cin.clear();
-                cin.ignore();
-            }
-            
-            for(string elem : attributes ){
-                fichier1 << "\t"<< elem << " = "<< 0 << ";" << endl;
-            }
-            fichier1 << "}" << endl;
-            fichier1 << nom_fichier_maj << "::" << nom_fichier_maj << "(";
-            
-            for(string elem: attributes){ 
-                if(attributes.back()!=elem){
-                    fichier1 << "int " << elem << ", " ;
-                }else{
-                    fichier1 << "int " << elem << ") {" << endl;
-                }
-            }
-
-            for(string elem : attributes ){
-                fichier1 << "\t this->"<< elem << " = "<< elem << ";" << endl;
-            }
-
-            fichier1 << "}" << endl;
-            createGetters(&fichier1, attributes, nom_fichier_maj);
-            createSetters(&fichier1, attributes, nom_fichier_maj);
-            break;
+        fichier1<< "#include " << "\"" << nom_fichier 
+        << ".h\"" << endl;
+        fichier1 << endl;
+        fichier1 << firstMaj(nom_fichier) << "::" << firstMaj(nom_fichier) <<"() {" << endl;
+        string attribute;
+        cout << "Entrez les attributs (finissez par \"end\"): ";
+        while (cin >> attribute && (attribute !="end")){
+            attributes.push_back(attribute);
+            cin.clear();
+            cin.ignore();
         }
+        
+        for(string elem : attributes ){
+            fichier1 << "\t"<< elem << " = "<< 0 << ";" << endl;
+        }
+        fichier1 << "}" << endl;
+        fichier1 << firstMaj(nom_fichier) << "::" << firstMaj(nom_fichier) << "(";
+        
+        for(string elem: attributes){ 
+            if(attributes.back()!=elem){
+                fichier1 << "int " << elem << ", " ;
+            }else{
+                fichier1 << "int " << elem << ") {" << endl;
+            }
+        }
+
+        for(string elem : attributes ){
+            fichier1 << "\t this->"<< elem << " = "<< elem << ";" << endl;
+        }
+
+        fichier1 << "}" << endl;
+        createGetters(&fichier1, attributes, firstMaj(nom_fichier));
+        createSetters(&fichier1, attributes, firstMaj(nom_fichier));
+        
         fichier1.close();
     }
     // Generation fichier .h
     
-    if(fichier3.is_open()){
-        fichier3 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " << fullMaj(nom_fichier) << "_H\n\n"
+    if(fichier2.is_open()){
+        fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " << fullMaj(nom_fichier) << "_H\n\n"
         << "class "<< firstMaj(nom_fichier) << " {\npublic:\n\t" 
         << firstMaj(nom_fichier) <<"();\n\t" << firstMaj(nom_fichier)
         << "(" ;
@@ -108,28 +103,28 @@ int main(){
         
         for(string elem : attributes){
             if(attributes.back()!=elem){
-                fichier3 << "int " << elem << ", ";
+                fichier2 << "int " << elem << ", ";
             }else{
-                fichier3 << "int " << elem;
+                fichier2 << "int " << elem;
             }
         }
-        fichier3 << ");\n\n\t";
+        fichier2 << ");\n\n\t";
 
 
         for(string elem : attributes){
-            fichier3 << "int get"<< firstMaj(elem) << "() const;\n\tvoid set" 
+            fichier2 << "int get"<< firstMaj(elem) << "() const;\n\tvoid set" 
             << firstMaj(elem)<< "(int " << elem<<");\n\t" ;
         }
-        fichier3 << "\n\nprivate:";
+        fichier2 << "\n\nprivate:";
         for(string elem : attributes){
-            fichier3 << "\n\tint "<< elem << ";"; 
+            fichier2 << "\n\tint "<< elem << ";"; 
         }
-        fichier3 << "\n};\n\n#endif";
+        fichier2 << "\n};\n\n#endif";
     }
     else
         cout << "Impossible d'ouvrir le fichier\n";
 
-    fichier3.close();
+    fichier2.close();
     
     // Generation fichier main.cpp
     if(fichier3.is_open()){
@@ -151,16 +146,23 @@ int main(){
             break;
         }
         fichier3.close();
+
         // Génération du fichier 4
         if(fichier4.is_open()){
             fichier4 << "CXX = g++\n"
             << "CXXFLAGS = -std=c++11 -Wall\n\n"
             << "all: " << nom_fichier << "\n\n"
-            << nom_fichier << ": " << firstMaj(nom_fichier) <<".cpp main.cpp\n\t"
+            << nom_fichier << ": " << nom_fichier <<".cpp main.cpp\n\t"
             <<"$(CXX) $(CXXFLAGS) -o " << nom_fichier << ' ' 
-            << firstMaj(nom_fichier) <<".cpp main.cpp\n\n"
+            << nom_fichier <<".cpp main.cpp\n\n"
+            << "run:\n\t"
+            << "./" << nom_fichier <<"\n\n"
             << "clean:\n\t"
-            << "rm -f " << nom_fichier << "\n\t";
+            << "rm -f " << nom_fichier << "\n\t"
+            << "rm -f " << nom_fichier << ".h" << "\n\t"
+            << "rm -f " << nom_fichier << ".cpp" << "\n\t"
+            << "rm -f main.cpp\n\t"
+            << "rm -f Makefile";
 
         }else{
             cout << "Impossible d'ouvrir le fichier";

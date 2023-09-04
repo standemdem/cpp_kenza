@@ -105,7 +105,8 @@ all: myprogram
 
 myprogram: MyClass.cpp main.cpp
 	$(CXX) $(CXXFLAGS) -o myprogram MyClass.cpp main.cpp
-
+run: 
+    ./myprogram
 clean:
 	rm -f myprogram
 	rm -f MyClass.h
