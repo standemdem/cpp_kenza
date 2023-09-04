@@ -17,5 +17,4 @@ void generationCPP(string nom_fichier, vector<string> &attributes);
 void generationMain(string nom_fichier,vector<string> &attributes);
 void generationMakefile(string nom_fichier, vector<string> &attributes);
 
-
 #endif

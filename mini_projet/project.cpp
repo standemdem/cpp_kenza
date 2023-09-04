@@ -1,7 +1,5 @@
 #include "lib.h"
 
-
-
 int main(){
     string nom_fichier;
     vector<string> attributes;

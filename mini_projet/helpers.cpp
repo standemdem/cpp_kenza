@@ -1,6 +1,5 @@
 #include "lib.h"
 
-
 string fullMaj(string str){
     string chaineFullMaj;
     for(int i=0 ; str[i] !='\0';i++)
@@ -21,9 +20,9 @@ void createGetters(ofstream *fichier, vector<string> attributes, string classNam
         << '\n' << '\t'
         << "return " << attribute << ';' << '\n'
         << '}' <<endl; 
-
     }
 }
+
 void createSetters(ofstream *fichier, vector<string> attributes, string className){
     for(string attribute: attributes){
         *fichier << "void " << className << "::set" 
@@ -34,6 +33,5 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
         << "this->" << attribute << " = " << attribute << ';' 
         << '\n'
         << '}' <<endl; 
-
     }
 }

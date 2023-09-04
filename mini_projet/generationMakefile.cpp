@@ -21,5 +21,4 @@ void generationMakefile(string nom_fichier, vector<string> &attributes){
         }else{
             cout << "Impossible d'ouvrir le fichier";
         }
-    
 }

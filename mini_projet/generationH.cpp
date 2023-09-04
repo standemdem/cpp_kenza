@@ -1,6 +1,5 @@
 #include "lib.h"
 
-
 void generationH(string nom_fichier,vector<string> &attributes)
 {
     ofstream fichier2(nom_fichier+".h"); 
@@ -19,7 +18,6 @@ void generationH(string nom_fichier,vector<string> &attributes)
             }
         }
         fichier2 << ");\n\n\t";
-
 
         for(string elem : attributes){
             fichier2 << "int get"<< firstMaj(elem) << "() const;\n\tvoid set" 
