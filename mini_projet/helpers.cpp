@@ -14,24 +14,32 @@ string firstMaj(string str){
 }
 
 void createGetters(ofstream *fichier, vector<string> attributes, string className){
-    for(string attribute: attributes){
-        *fichier << "int " << className << "::get" 
-        << firstMaj(attribute) << "() const {"
-        << '\n' << '\t'
-        << "return " << attribute << ';' << '\n'
-        << '}' <<endl; 
+    if(attributes.empty()){
+        *fichier << '\n';
+    }else{
+        for(string attribute: attributes){
+            *fichier << "int " << className << "::get" 
+            << firstMaj(attribute) << "() const {"
+            << '\n' << '\t'
+            << "return " << attribute << ';' << '\n'
+            << '}' <<endl; 
+        }
     }
 }
 
 void createSetters(ofstream *fichier, vector<string> attributes, string className){
-    for(string attribute: attributes){
-        *fichier << "void " << className << "::set" 
-        << firstMaj(attribute) << "(int " 
-        << attribute
-        << ") {"
-        << '\n' << '\t'
-        << "this->" << attribute << " = " << attribute << ';' 
-        << '\n'
-        << '}' <<endl; 
+    if(attributes.empty()){
+        *fichier << '\n';
+    }else{
+        for(string attribute: attributes){
+            *fichier << "void " << className << "::set" 
+            << firstMaj(attribute) << "(int " 
+            << attribute
+            << ") {"
+            << '\n' << '\t'
+            << "this->" << attribute << " = " << attribute << ';' 
+            << '\n'
+            << '}' <<endl; 
+        }
     }
 }
