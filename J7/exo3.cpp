@@ -18,9 +18,9 @@ int main(){
     {
         cout << "resultat = " << divise(22, 0) << endl;
     }
-    catch(const exception& e)
+    catch(const runtime_error& e)
     {
-        cerr << e.what() << '\n';
+        cerr << "Erreur: " << e.what() << '\n';
     }
     return 0;
 }
