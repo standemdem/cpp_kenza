@@ -19,11 +19,11 @@ public:
     }
 
     void obtenirDonnee(int index){
-        if(!(datacenter.empty())){
+        if(!(datacenter.empty()) && index >=0){
             cout<< "A l'index " << index << " : " << datacenter[index] << endl;
 
         }else{
-            cout << "Rien à l'index " << index << endl;
+            cerr << "Rien à l'index " << index << endl;
         }
     }
 
