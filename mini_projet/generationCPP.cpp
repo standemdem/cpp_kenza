@@ -2,7 +2,8 @@
 
 void generationCPP(string nom_fichier, vector<string> &attributes){
     regex pattern("^[a-zA-Z]+$");
-    ofstream fichier1(nom_fichier+".cpp"); 
+    ofstream fichier1(nom_fichier+".cpp");
+    string attribute; 
     
     if(fichier1.is_open()){
         fichier1<< "#include " << "\"" << nom_fichier 

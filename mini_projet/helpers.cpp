@@ -25,7 +25,7 @@ void createGetters(ofstream *fichier, vector<string> attributes, string classNam
         *fichier << '\n';
     }else{
         for(string attribute: attributes){
-            *fichier << "\tint " << className << "::get" 
+            *fichier << "int " << className << "::get" 
             << firstMaj(attribute) << "() const {"
             << '\n' << '\t'
             << "return " << attribute << ';' << '\n'
@@ -39,7 +39,7 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
         *fichier << '\n';
     }else{
         for(string attribute: attributes){
-            *fichier << "\tvoid " << className << "::set" 
+            *fichier << "void " << className << "::set" 
             << firstMaj(attribute) << "(int " 
             << attribute
             << ") {"
