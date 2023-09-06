@@ -17,7 +17,7 @@ void generationMain(string nom_fichier, vector<string> &attributes) {
         }
 
         for(string elem : attributes) {
-            fichier3 <<"\tcout << " << "\"" << firstMaj(elem)
+            fichier3 << "\tcout << " << "\"" << firstMaj(elem)
             << " = \" << obj.get" << firstMaj(elem) << "() << endl;" << '\n';
         }
         
