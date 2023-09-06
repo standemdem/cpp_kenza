@@ -47,11 +47,11 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                             monType.push_back(attribute);                      
                             cin.clear();
                             cin.ignore();
-                            compteur++;
                             }
                         else
                             cout << "Le type de : " << attribute << " n'est pas un type de variable existant" << endl;                      
-                    continue;
+                        compteur++;
+                        continue;
                     }
                     // Cas ou l'on saisie une variable
                     if(compteur % 2 == 1 ){

@@ -85,3 +85,8 @@ void createSettersPrototype(ofstream *fichier, vector<string> attributes, string
         }
     }
 }
+
+bool notExist(vector<string> &attributes){
+
+    
+}
