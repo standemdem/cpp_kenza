@@ -43,3 +43,7 @@ dossierProjet/make run
 # Supprimer tous les fichiers générés, makefile y compris
 dossierProjet/make clean
 ```
+
+### ERREURS NON RESOLUES
+* Lors de la génération du main, nous n'avons pas encore géré l'allocation dynamique des variables fournies aux setters
+* Si on choisit des types qui ne sont pas bon lors de la déclaration des attributs, cela bloque
