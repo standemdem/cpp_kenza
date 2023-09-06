@@ -20,7 +20,7 @@ void generationH(string nom_fichier,vector<string> &attributes)
             }
             fichier2 << ");\n\n";
         }
-    cout << "coucou";
+
         createGettersPrototype(&fichier2, attributes, firstMaj(nom_fichier));
         createSettersPrototype(&fichier2, attributes, firstMaj(nom_fichier));
 
