@@ -13,7 +13,7 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
     int compteur = 0;
     int index = 0;
     
-    ofstream fichier1(nom_fichier+".cpp"); 
+    ofstream fichier1("./dossierProjet/" + nom_fichier + ".cpp"); 
 
     if(fichier1.is_open()) {
         fichier1 << "#include " << "\"" << nom_fichier << ".h\"" << endl

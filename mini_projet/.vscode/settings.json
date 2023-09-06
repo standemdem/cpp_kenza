@@ -6,6 +6,7 @@
         "iostream": "cpp",
         "iosfwd": "cpp",
         "typeinfo": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "ostream": "cpp"
     }
 }
