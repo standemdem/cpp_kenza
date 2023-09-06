@@ -15,15 +15,11 @@ Pour générer les fichiers .cpp, .h et le makefile demandés, il faut compiler 
 ```bash
 make
 ``` 
-Il faut ensuite éxecuter le fichier a.out (Linux) ou a.exe (Windows)
-```bash
-# Sous Linux
-make run
-``` 
-```powershell
-# sous Windows
+Puis la commande 
+```
 make run
 ```
+
 La console demande à l'utilisateur de rentrer:
 * Un nom de classe
 * Un choix <(y/n)> de personnalisation de typage
@@ -38,7 +34,7 @@ La commande génère ensuite les fichiers suivants dans le sous dossier dossierP
 
 Pour générer l'executable tapper la commande suivante:
 ```bash
-dossierProjet/make
+cd dossierProjet/ && make
 ```
 Les commandes pour gérer le projet via le makefile sont:
 ``` bash
