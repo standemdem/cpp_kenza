@@ -42,19 +42,26 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                 while (cin >> attribute && (attribute != "end")) {
                 
                     // Cas ou l'on saisie un type
-                    if(regex_match(attribute, type) && compteur %2 == 0){
-                        monType.push_back(attribute);                      
-                        cin.clear();
-                        cin.ignore();
-                        compteur++;
+                    if(compteur % 2 == 0 ){
+                        if(regex_match(attribute, type) && compteur %2 == 0 ){
+                            monType.push_back(attribute);                      
+                            cin.clear();
+                            cin.ignore();
+                            compteur++;
+                            }
+                        else
+                            cout << "Le type de : " << attribute << " n'est pas un type de variable existant" << endl;
                     }
-                
                     // Cas ou l'on saisie une variable
-                    if(regex_match(attribute, variableName) && regex_match(attribute, notType) && ((compteur % 2) == 1)) {
-                        attributes.push_back(attribute);
-                        cin.clear();
-                        cin.ignore();
-                        compteur++;
+                    if(compteur % 2 == 1 ){
+                        if(regex_match(attribute, variableName) && regex_match(attribute, notType) && compteur %2 ==1) {
+                            attributes.push_back(attribute);
+                            cin.clear();
+                            cin.ignore();
+                            compteur++;
+                            }
+                            else
+                                cout << "La variable : " << attribute << " a une mauvaise syntaxe - Variable non créee" << endl;
                     }
                 }
 

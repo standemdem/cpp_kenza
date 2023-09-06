@@ -5,7 +5,9 @@ void generationH(string nom_fichier,vector<string> &attributes,vector<string> &m
     int index=0;
     if(fichier2.is_open()) {
         fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " 
-        << fullMaj(nom_fichier) << "_H\n#include <iostream>\nusing namespace std;\n\n" << "class "
+        << fullMaj(nom_fichier) << "_H" << endl ;
+        fichier2 << "#include <iostream>" << endl 
+        << "using namespace std;\n\n" << "class "
         << firstMaj(nom_fichier) << " {\npublic:\n\t" 
         << firstMaj(nom_fichier) <<"();\n\t"; 
         

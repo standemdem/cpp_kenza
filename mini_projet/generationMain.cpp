@@ -9,7 +9,7 @@ void generationMain(string nom_fichier, vector<string> &attributes) {
         << ".h\"" << '\n'
         << "#include <iostream>" << '\n' 
         << '\n'
-        << "int main() {" << '\n'
+        << "int main() {" << '\n' << "\tsystem(\"chcp 65001\");" << '\n'
         << '\t' << firstMaj(nom_fichier) << " obj;\n";
 
         for(string elem : attributes) {
