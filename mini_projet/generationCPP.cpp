@@ -5,9 +5,10 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
     regex variableName("^[_a-z][_a-zA-Z0-9]*$");
     regex notType("^(?!.*\\b(vector|string|int|bool|float|double|char|null|const|static|volatile|inline|void|short|long|signed|unsigned|struct|union|class|enum|virtual|override|final|public|protected|private)\\b).*$");
     regex type("^(string|int|bool|float|double|char|void|short|int|long|unsigned|signed|wchar_t|char16_t|char32_t|char8_t)$");
-    
+    regex accent(".*[àáâãäåçèéêëìíîïðòóôõöùúûüýÿÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖÙÚÛÜÝ].*");
     string choix;
     string attribute;
+    int compteur_err=1;
     int compteur = 0;
     int index = 0;
     ofstream fichier1(nom_fichier+".cpp"); 
@@ -25,14 +26,28 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
             
                 while (cin >> attribute && (attribute != "end")) {
 
-                    if(regex_match(attribute, variableName) && regex_match(attribute, notType)) {
-                        monType.push_back("int");
+                    if(regex_match(attribute, variableName) && regex_match(attribute, notType) && notExist(attribute,attributes) && !(contientAccent(attribute)) ) {
+                        monType.push_back("int");                   
                         attributes.push_back(attribute);
                         cin.clear();
                         cin.ignore();
-                    } else {
-                        cout << "La variable : " << attribute << " a une mauvaise syntaxe - Variable non créée" << endl;
+                    } 
+                    else if(contientAccent(attribute)) {
+                        cout << "La variable numero : " << compteur_err << " contient un accent ! (cette variable est donc effacé)" << endl;
+                        cin.clear();
+                        cin.ignore();
                     }
+                    else if(notExist(attribute,attributes)) {
+                        cout << "La variable : " << attribute << " a une mauvaise syntaxe - Variable non créée" << endl;
+                        cin.clear();
+                        cin.ignore();
+                    }                  
+                    else{
+                        cout << "La variable : " << attribute << " est déjà existante- Variable non créée" << endl;
+                        cin.clear();
+                        cin.ignore();
+                    }
+                    compteur_err++;
                 }
                 break;
             }
@@ -55,7 +70,7 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                     }
                     // Cas ou l'on saisie une variable
                     if(compteur % 2 == 1 ){
-                        if(regex_match(attribute, variableName) && regex_match(attribute, notType)) {
+                        if(regex_match(attribute, variableName) && regex_match(attribute, notType) && notExist(attribute,attributes)) {
                             attributes.push_back(attribute);
                             cin.clear();
                             cin.ignore();

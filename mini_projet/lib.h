@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include <algorithm>
 
 using namespace std;
 
@@ -15,7 +16,8 @@ using namespace std;
 string fullMin(string str);
 string fullMaj(string str);
 string firstMaj(string str);
-bool notExist(vector<string> &attributes);
+bool contientAccent(const string& var);
+bool notExist(string attribute, vector<string> attributes);
 void createGetters(ofstream *fichier, vector<string> attributes, string className,vector<string> monType);
 void createSetters(ofstream *fichier, vector<string> attributes, string className,vector<string> monType);
 void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className,vector<string> monType);

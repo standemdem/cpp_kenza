@@ -86,7 +86,20 @@ void createSettersPrototype(ofstream *fichier, vector<string> attributes, string
     }
 }
 
-bool notExist(vector<string> &attributes){
-
-    
+bool notExist(string attribute, vector<string> attributes) {
+    for(string exist: attributes)
+        if(attribute == exist)
+            return false;
+    return true;
 }
+
+bool contientAccent(const string& var) {
+    const string accents = "àáâãäåçèéêëìíîïðòóôõöùúûüýÿÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖÙÚÛÜÝ";
+    for (int i=0; i < 107 ;i++) 
+        for(unsigned int j=0;j<var.size();j++)
+            if (var[j] == accents[i]) 
+                return true;
+    return false;
+}
+
+
