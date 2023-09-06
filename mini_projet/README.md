@@ -30,7 +30,7 @@ La console demande à l'utilisateur de rentrer:
 
 La commande génère ensuite les fichiers suivants:
 
-- Un fichier <nom_de_la_classe> (.h) contenant ld prototype complet de la classe.
+- Un fichier <nom_de_la_classe> (.h) contenant le prototype complet de la classe.
 - Un fichier <nom_de_la_classe> (.cpp) contenant la declaration de la classe et les implémentations des méthodes de la classe.
 - Un fichier main.cpp avec des tests pour la classe générée.
 - Un Makefile qui compile le projet avec g++.
