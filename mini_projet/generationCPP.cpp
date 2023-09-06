@@ -43,18 +43,18 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                 
                     // Cas ou l'on saisie un type
                     if(compteur % 2 == 0 ){
-                        if(regex_match(attribute, type) && compteur %2 == 0 ){
+                        if(regex_match(attribute, type)){
                             monType.push_back(attribute);                      
                             cin.clear();
                             cin.ignore();
                             compteur++;
                             }
                         else
-                            cout << "Le type de : " << attribute << " n'est pas un type de variable existant" << endl;
+                            cout << "Le type de : " << attribute << " n'est pas un type de variable existant" << endl;                      
                     }
                     // Cas ou l'on saisie une variable
                     if(compteur % 2 == 1 ){
-                        if(regex_match(attribute, variableName) && regex_match(attribute, notType) && compteur %2 ==1) {
+                        if(regex_match(attribute, variableName) && regex_match(attribute, notType)) {
                             attributes.push_back(attribute);
                             cin.clear();
                             cin.ignore();

@@ -7,9 +7,10 @@ void generationH(string nom_fichier,vector<string> &attributes,vector<string> &m
         fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " 
         << fullMaj(nom_fichier) << "_H" << endl ;
         fichier2 << "#include <iostream>" << endl 
-        << "using namespace std;\n\n" << "class "
-        << firstMaj(nom_fichier) << " {\npublic:\n\t" 
+        << "using namespace std;\n\n" << endl 
+        << "class " << firstMaj(nom_fichier) << " {\npublic:\n\t" 
         << firstMaj(nom_fichier) <<"();\n\t"; 
+        
         
         if(!attributes.empty()) {
             fichier2 << firstMaj(nom_fichier) << "(" ;
