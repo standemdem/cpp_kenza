@@ -1,30 +1,30 @@
 #include "lib.h"
 
-string fullMaj(string str){
+string fullMaj(string str) {
     string chaineFullMaj;
-    for(int i=0 ; str[i] !='\0';i++)
+    for(int i = 0; str[i] != '\0'; i++)
         chaineFullMaj += toupper(str[i]);
     return chaineFullMaj;
 }
 
-string firstMaj(string str){
-    string temp = str;
-    temp[0]=toupper(temp[0]);
-    return temp;
+string firstMaj(string str) {
+    string chaineFirstmaj = str;
+    chaineFirstmaj[0] = toupper(chaineFirstmaj[0]);
+    return chaineFirstmaj;
 }
 
-string fullMin(string str){
+string fullMin(string str) {
     string chaineFullMin;
-    for(int i=0 ; str[i] !='\0';i++)
+    for(int i = 0; str[i] != '\0'; i++)
         chaineFullMin += tolower(str[i]);
     return chaineFullMin;
 }
 
-void createGetters(ofstream *fichier, vector<string> attributes, string className){
-    if(attributes.empty()){
+void createGetters(ofstream *fichier, vector<string> attributes, string className) {
+    if(attributes.empty()) {
         *fichier << '\n';
-    }else{
-        for(string attribute: attributes){
+    } else {
+        for(string attribute: attributes) {
             *fichier << "int " << className << "::get" 
             << firstMaj(attribute) << "() const {"
             << '\n' << '\t'
@@ -34,11 +34,11 @@ void createGetters(ofstream *fichier, vector<string> attributes, string classNam
     }
 }
 
-void createSetters(ofstream *fichier, vector<string> attributes, string className){
-    if(attributes.empty()){
+void createSetters(ofstream *fichier, vector<string> attributes, string className) {
+    if(attributes.empty()) {
         *fichier << '\n';
-    }else{
-        for(string attribute: attributes){
+    } else {
+        for(string attribute: attributes) {
             *fichier << "void " << className << "::set" 
             << firstMaj(attribute) << "(int " 
             << attribute
@@ -46,16 +46,16 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
             << '\n' << '\t'
             << "this->" << attribute << " = " << attribute << ';' 
             << '\n'
-            << '}' <<endl; 
+            << '}' << endl; 
         }
     }
 }
 
-void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className){
-    if(attributes.empty()){
+void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className) {
+    if(attributes.empty()) {
         *fichier << '\n';
-    }else{
-        for(string attribute: attributes){
+    } else {
+        for(string attribute: attributes) {
             *fichier << "\tint " << "get" 
             << firstMaj(attribute) << "() const;" << endl;
         }
@@ -63,15 +63,15 @@ void createGettersPrototype(ofstream *fichier, vector<string> attributes, string
     }
 }
 
-void createSettersPrototype(ofstream *fichier, vector<string> attributes, string className){
-    if(attributes.empty()){
+void createSettersPrototype(ofstream *fichier, vector<string> attributes, string className) {
+    if(attributes.empty()) {
         *fichier << '\n';
-    }else{
-        for(string attribute: attributes){
+    } else {
+        for(string attribute: attributes) {
             *fichier << "\tvoid " << "set" 
             << firstMaj(attribute) << "(int " 
             << attribute
-            << "); "<<endl; 
+            << "); "<< endl; 
         }
     }
 }
