@@ -23,4 +23,26 @@ Il faut ensuite éxecuter le fichier a.out (Linux) ou a.exe (Windows)
 # sous Windows
 ./a.exe
 ```
+La console demande à l'utilisateur de rentrer:
+* Un nom de classe
+* Un choix <(y/n)> de personnalisation de typage
+* Une demande d'input utilisateur pour définition des attributs de la classe. 
 
+La commande génère ensuite les fichiers suivants:
+
+- Un fichier <nom_de_la_classe> (.h) contenant ld prototype complet de la classe.
+- Un fichier <nom_de_la_classe> (.cpp) contenant la declaration de la classe et les implémentations des méthodes de la classe.
+- Un fichier main.cpp avec des tests pour la classe générée.
+- Un Makefile qui compile le projet avec g++.
+
+Pour générer l'executable tapper la commande suivate:
+```bash
+make
+```
+Les commandes pour gérer le projet via le makefile sont:
+``` bash
+# Executer le projet et faire les tests contenu dans le main.cpp
+make run
+# Supprimer tous les fichiers générés, makefile y compris
+make clean
+```
