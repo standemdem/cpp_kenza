@@ -1,7 +1,7 @@
 #include "lib.h"
 
 void generationH(string nom_fichier,vector<string> &attributes,vector<string> &monType) {
-    ofstream fichier2("./dossierProjet/" + nom_fichier + ".h");
+    ofstream fichier2("./dossierProjet/"+nom_fichier + ".h");
     int index = 0;
     if(fichier2.is_open()) {
         fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " 

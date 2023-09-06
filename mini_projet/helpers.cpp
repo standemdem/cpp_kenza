@@ -1,5 +1,6 @@
 #include "lib.h"
 
+
 string fullMaj(string str) {
     string chaineFullMaj;
     for(int i = 0; str[i] != '\0'; i++)
@@ -94,6 +95,7 @@ bool notExist(string attribute, vector<string> attributes) {
 }
 
 bool contientAccent(const string& var) {
+
     const string accents = "àáâãäåçèéêëìíîïðòóôõöùúûüýÿÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖÙÚÛÜÝ";
     for (int i=0; i < 107 ;i++) 
         for(unsigned int j=0;j<var.size();j++)
