@@ -21,7 +21,7 @@ Il faut ensuite éxecuter le fichier a.out (Linux) ou a.exe (Windows)
 ``` 
 ```powershell
 # sous Windows
-./a.exe
+.\a.exe
 ```
 La console demande à l'utilisateur de rentrer:
 * Un nom de classe
