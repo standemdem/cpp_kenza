@@ -1,14 +1,13 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall
+all: project
 
-all: dossierProjet/monExe
-
-dossierProjet/monExe: 
-	@mkdir -p dossierProjet
-	$(CXX) $(CXXFLAGS) -o $@ 
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+project: 
+	mkdir -p dossierProjet
+	project.cpp helpers.cpp generationCPP.cpp generationH.cpp generationMain.cpp generationMakefile.cpp
+	$(CXX) $(CXXFLAGS) -o ./dossierProjet/monExe project.cpp helpers.cpp generationCPP.cpp generationH.cpp generationMain.cpp generationMakefile.cpp
+	./monExe
 
 run:
-	./dossierProjet/monExe
+	dossierProjet/monExe.exe
+
