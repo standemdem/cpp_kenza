@@ -2,14 +2,13 @@
 
 void generationCPP(string nom_fichier, vector<string> &attributes, vector<string> &monType) {
 
+    string choix;
+    string attribute;
     regex variableName("^[_a-z][_a-zA-Z0-9]*$");
     regex notType("^(?!.*\\b(vector|string|int|bool|float|double|char|null|const|static|volatile|inline|void|short|long|signed|unsigned|struct|union|class|enum|virtual|override|final|public|protected|private)\\b).*$");
     regex type("^(string|int|bool|float|double|char|void|short|int|long|unsigned|signed|wchar_t|char16_t|char32_t|char8_t)$");
     regex accent(".*[àáâãäåçèéêëìíîïðòóôõöùúûüýÿÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖÙÚÛÜÝ].*");
-    
-    string choix;
-    string attribute;
-    
+
     int compteur_err = 1;
     int compteur = 0;
     int index = 0;

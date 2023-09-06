@@ -12,7 +12,6 @@ using namespace std;
 
 
 
-
 string fullMin(string str);
 string fullMaj(string str);
 string firstMaj(string str);
@@ -26,6 +25,7 @@ void generationH(string nom_fichier,vector<string> &attributes,vector<string> &m
 void generationCPP(string nom_fichier, vector<string> &attributes,vector<string> &monType);
 void generationMain(string nom_fichier,vector<string> &attributes);
 void generationMakefile(string nom_fichier, vector<string> &attributes);
+
 
 
 #endif
