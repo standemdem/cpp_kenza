@@ -51,6 +51,7 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                             }
                         else
                             cout << "Le type de : " << attribute << " n'est pas un type de variable existant" << endl;                      
+                    continue;
                     }
                     // Cas ou l'on saisie une variable
                     if(compteur % 2 == 1 ){
