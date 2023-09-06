@@ -77,7 +77,6 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                             attributes.push_back(attribute);
                             cin.clear();
                             cin.ignore();
-                            compteur++;
                         } else if(contientAccent(attribute)) {
                         cout << "La variable numero : " << compteur_err << " contient un accent ! (cette variable est donc effacé)" << endl;
                         cin.clear();

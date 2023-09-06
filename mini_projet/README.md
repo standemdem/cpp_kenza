@@ -46,4 +46,4 @@ dossierProjet/make clean
 
 ### ERREURS NON RESOLUES
 * Lors de la génération du main, nous n'avons pas encore géré l'allocation dynamique des variables fournies aux setters
-* Si on choisit des types qui ne sont pas bon lors de la déclaration des attributs, cela bloque
+* Si on choisit des types qui ne sont pas bon lors de la création d'attribut le programme s'arrête et doit être relancé.
