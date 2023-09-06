@@ -22,6 +22,7 @@ void generationH(string nom_fichier,vector<string> &attributes)
         }
         createGetters(&fichier2, attributes, firstMaj(nom_fichier));
         createSetters(&fichier2, attributes, firstMaj(nom_fichier));
+        
 
         fichier2 << "\n\nprivate:";
         for(string elem : attributes){

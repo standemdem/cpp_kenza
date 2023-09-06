@@ -17,7 +17,7 @@ double racineCarree(double n){
 
 template<typename T>
 T racineCarree2(T n){
-    assert(n>0 && "nombre négatifs interdits")
+    assert(n>0 && "nombre négatifs interdits");
     if(n > INT16_MAX) throw runtime_error("Nombre trop grand");
     return pow(n, 0.5);
 }
