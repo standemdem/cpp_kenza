@@ -2,7 +2,7 @@
 
 void generationH(string nom_fichier,vector<string> &attributes,vector<string> &monType) {
     ofstream fichier2(nom_fichier + ".h");
-    int index=0;
+    int index = 0;
     if(fichier2.is_open()) {
         fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " 
         << fullMaj(nom_fichier) << "_H" << endl ;
@@ -16,9 +16,9 @@ void generationH(string nom_fichier,vector<string> &attributes,vector<string> &m
             fichier2 << firstMaj(nom_fichier) << "(" ;
     
             for(string elem : attributes) {
-                if(attributes.back()!=elem){
+                if(attributes.back() != elem) {
                     fichier2 << monType[index] << " " << elem << ", ";
-                }else{
+                } else {
                     fichier2 << monType[index] << " " << elem;
                 }
                 index++;
@@ -31,9 +31,9 @@ void generationH(string nom_fichier,vector<string> &attributes,vector<string> &m
         createSettersPrototype(&fichier2, attributes, firstMaj(nom_fichier), monType);
 
         fichier2 << "\n\nprivate:";
-        index=0;
+        index = 0;
         for(string elem : attributes) {
-            fichier2 << "\n\t" << monType[index] << " " << elem << ";"; 
+            fichier2 << "\n\t" << monType[index] << " " << elem << ';'; 
             index++;
         }
 
