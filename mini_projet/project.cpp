@@ -9,6 +9,7 @@ int main(){
     cout << "Entrez un nom de fichier"<< endl;
     getline(cin, nom_fichier);
     nom_fichier= "./dossierProjet/"+nom_fichier;
+    
     generationCPP(nom_fichier,attributes,monType);
     generationH(nom_fichier,attributes,monType);
     generationMain(nom_fichier,attributes);

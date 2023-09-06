@@ -1,17 +1,15 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall
+OBJS = project.o helpers.o generationCPP.o generationH.o generationMain.o generationMakefile.o
 
-all: stan
+all: dossierProjet/monExe
 
-stan: stan.cpp main.cpp
-	$(CXX) $(CXXFLAGS) -o stan stan.cpp main.cpp
+dossierProjet/monExe: $(OBJS)
+	@mkdir -p dossierProjet
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 run:
-	./stan
-
-clean:
-	rm -f stan
-	rm -f stan.h
-	rm -f stan.cpp
-	rm -f main.cpp
-	rm -f Makefile
+	./dossierProjet/monExe
