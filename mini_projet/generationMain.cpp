@@ -2,7 +2,7 @@
 
 void generationMain(string nom_fichier, vector<string> &attributes) { 
     
-    ofstream fichier3("main.cpp");
+    ofstream fichier3("./dossierProjet/main.cpp");
 
     if(fichier3.is_open()) {
         fichier3 << "#include " << "\"" << nom_fichier 

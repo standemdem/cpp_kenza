@@ -1,7 +1,7 @@
 #include "lib.h"
 
 void generationMakefile(string nom_fichier, vector<string> &attributes){
-        ofstream fichier4("Makefile");
+        ofstream fichier4("dossierProjet/Makefile");
         if(fichier4.is_open()){
             fichier4 << "CXX = g++\n"
             << "CXXFLAGS = -std=c++11 -Wall\n\n"
