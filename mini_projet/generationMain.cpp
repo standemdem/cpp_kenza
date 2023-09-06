@@ -7,7 +7,7 @@ void generationMain(string nom_fichier, vector<string> &attributes) {
     if(fichier3.is_open()) {
         fichier3 << "#include " << "\"" << nom_fichier 
         << ".h\"" << '\n'
-        << "#include <iostream>" << '\n'
+        << "#include <iostream>" << '\n' 
         << '\n'
         << "int main() {" << '\n'
         << '\t' << firstMaj(nom_fichier) << " obj;\n";
@@ -17,8 +17,8 @@ void generationMain(string nom_fichier, vector<string> &attributes) {
         }
 
         for(string elem : attributes) {
-            fichier3 <<"\tstd::cout << " << "\"" << firstMaj(elem)
-            << " = \" << obj.get" << firstMaj(elem) << "() << std::endl;" << '\n';
+            fichier3 <<"\tcout << " << "\"" << firstMaj(elem)
+            << " = \" << obj.get" << firstMaj(elem) << "() << endl;" << '\n';
         }
         
         fichier3 << '\n' <<"return 0;\n}";            

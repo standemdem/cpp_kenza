@@ -20,58 +20,68 @@ string fullMin(string str) {
     return chaineFullMin;
 }
 
-void createGetters(ofstream *fichier, vector<string> attributes, string className) {
+void createGetters(ofstream *fichier, vector<string> attributes, string className,vector<string> monType) {
+    int index=0;
+    
     if(attributes.empty()) {
         *fichier << '\n';
     } else {
         for(string attribute: attributes) {
-            *fichier << "int " << className << "::get" 
+            *fichier << monType[index] << " " << className << "::get" 
             << firstMaj(attribute) << "() const {"
             << '\n' << '\t'
             << "return " << attribute << ';' << '\n'
             << '}' <<endl; 
+            index++;
         }
     }
 }
 
-void createSetters(ofstream *fichier, vector<string> attributes, string className) {
+void createSetters(ofstream *fichier, vector<string> attributes, string className,vector<string> monType) {
+    
+    int index=0;
     if(attributes.empty()) {
         *fichier << '\n';
     } else {
         for(string attribute: attributes) {
             *fichier << "void " << className << "::set" 
-            << firstMaj(attribute) << "(int " 
+            << firstMaj(attribute) << "(" << monType[index] << " "
             << attribute
             << ") {"
             << '\n' << '\t'
             << "this->" << attribute << " = " << attribute << ';' 
             << '\n'
             << '}' << endl; 
+            index++;
         }
     }
 }
 
-void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className) {
+void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className,vector<string> monType) {
+    int index=0;
     if(attributes.empty()) {
         *fichier << '\n';
     } else {
         for(string attribute: attributes) {
-            *fichier << "\tint " << "get" 
+            *fichier << "\t" << monType[index] << " " <<  "get" 
             << firstMaj(attribute) << "() const;" << endl;
+            index++;
         }
         *fichier << endl;
-    }
+    }    
 }
 
-void createSettersPrototype(ofstream *fichier, vector<string> attributes, string className) {
+void createSettersPrototype(ofstream *fichier, vector<string> attributes, string className,vector<string> monType) {
+    int index =0;
     if(attributes.empty()) {
         *fichier << '\n';
     } else {
         for(string attribute: attributes) {
             *fichier << "\tvoid " << "set" 
-            << firstMaj(attribute) << "(int " 
+            << firstMaj(attribute) << "(" << monType[index] << " " 
             << attribute
             << "); "<< endl; 
+            index++;
         }
     }
 }

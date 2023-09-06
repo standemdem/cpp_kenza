@@ -1,11 +1,11 @@
 #include "lib.h"
 
-void generationH(string nom_fichier,vector<string> &attributes) {
+void generationH(string nom_fichier,vector<string> &attributes,vector<string> &monType) {
     ofstream fichier2(nom_fichier + ".h");
-
+    int index=0;
     if(fichier2.is_open()) {
         fichier2 << "#ifndef " << fullMaj(nom_fichier) << "_H\n#define " 
-        << fullMaj(nom_fichier) << "_H\n\n" << "class "
+        << fullMaj(nom_fichier) << "_H\n#include <iostream>\nusing namespace std;\n\n" << "class "
         << firstMaj(nom_fichier) << " {\npublic:\n\t" 
         << firstMaj(nom_fichier) <<"();\n\t"; 
         
@@ -14,22 +14,24 @@ void generationH(string nom_fichier,vector<string> &attributes) {
     
             for(string elem : attributes) {
                 if(attributes.back()!=elem){
-                    fichier2 << "int " << elem << ", ";
+                    fichier2 << monType[index] << " " << elem << ", ";
                 }else{
-                    fichier2 << "int " << elem;
+                    fichier2 << monType[index] << " " << elem;
                 }
+                index++;
             }
 
             fichier2 << ");\n\n";
         }
 
-        createGettersPrototype(&fichier2, attributes, firstMaj(nom_fichier));
-        createSettersPrototype(&fichier2, attributes, firstMaj(nom_fichier));
+        createGettersPrototype(&fichier2, attributes, firstMaj(nom_fichier), monType);
+        createSettersPrototype(&fichier2, attributes, firstMaj(nom_fichier), monType);
 
         fichier2 << "\n\nprivate:";
-
+        index=0;
         for(string elem : attributes) {
-            fichier2 << "\n\tint " << elem << ";"; 
+            fichier2 << "\n\t" << monType[index] << " " << elem << ";"; 
+            index++;
         }
 
         fichier2 << "\n};\n\n#endif";

@@ -1,12 +1,12 @@
 #include "lib.h"
 
-void generationCPP(string nom_fichier, vector<string> &attributes){
+void generationCPP(string nom_fichier, vector<string> &attributes, vector<string> &monType){
     regex variableName("^[_a-z][_a-zA-Z0-9]*$");
     regex notType("^(?!.*\\b(vector|string|int|bool|float|double|char|null|const|static|volatile|inline|void|short|long|signed|unsigned|struct|union|class|enum|virtual|override|final|public|protected|private)\\b).*$");
-    regex type("^(int|bool|float|double|char|void|short|int|long|unsigned|signed|wchar_t|char16_t|char32_t|char8_t)$");
+    regex type("^(string|int|bool|float|double|char|void|short|int|long|unsigned|signed|wchar_t|char16_t|char32_t|char8_t)$");
     string choix;
-    vector<string> monType;
-    int cpt =0;
+    
+    int cpt =0,index=0;
     ofstream fichier1(nom_fichier+".cpp"); 
 
     if(fichier1.is_open()){
@@ -24,6 +24,7 @@ void generationCPP(string nom_fichier, vector<string> &attributes){
                 cout << "Entrez les attributs au format commencant par une lettre minuscule ou _ (finissez par \"end\"):\n";
                 while (cin >> attribute && (attribute !="end")){
                     if(regex_match(attribute, variableName) && regex_match(attribute, notType)){
+                        monType.push_back("int");
                         attributes.push_back(attribute);
                         cin.clear();
                         cin.ignore();
@@ -65,10 +66,11 @@ void generationCPP(string nom_fichier, vector<string> &attributes){
         
         for(string elem: attributes){ 
             if(attributes.back()!=elem){
-                fichier1 << "int " << elem << ", " ;
+                fichier1 << monType[index]  << " " << elem << ", " ;
             }else{
-                fichier1 << "int " << elem << ") {" << endl;
+                fichier1 << monType[index] << " " <<  elem << ") {" << endl;
             }
+            index++;
         }
 
         for(string elem : attributes ){
@@ -76,8 +78,8 @@ void generationCPP(string nom_fichier, vector<string> &attributes){
         }
 
         fichier1 << "}" << endl;
-        createGetters(&fichier1, attributes, firstMaj(nom_fichier));
-        createSetters(&fichier1, attributes, firstMaj(nom_fichier));
+        createGetters(&fichier1, attributes, firstMaj(nom_fichier),monType);
+        createSetters(&fichier1, attributes, firstMaj(nom_fichier),monType);
         
         fichier1.close();
 }
