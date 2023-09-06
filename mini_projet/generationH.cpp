@@ -20,9 +20,9 @@ void generationH(string nom_fichier,vector<string> &attributes)
             }
             fichier2 << ");\n\n";
         }
-        createGetters(&fichier2, attributes, firstMaj(nom_fichier));
-        createSetters(&fichier2, attributes, firstMaj(nom_fichier));
-        
+
+        createGettersPrototype(&fichier2, attributes, firstMaj(nom_fichier));
+        createSettersPrototype(&fichier2, attributes, firstMaj(nom_fichier));
 
         fichier2 << "\n\nprivate:";
         for(string elem : attributes){

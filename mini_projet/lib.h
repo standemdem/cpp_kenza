@@ -14,6 +14,8 @@ string fullMaj(string str);
 string firstMaj(string str);
 void createGetters(ofstream *fichier, vector<string> attributes, string className);
 void createSetters(ofstream *fichier, vector<string> attributes, string className);
+void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className);
+void createSettersPrototype(ofstream *fichier, vector<string> attributes, string className);
 void generationH(string nom_fichier,vector<string> &attributes);
 void generationCPP(string nom_fichier, vector<string> &attributes);
 void generationMain(string nom_fichier,vector<string> &attributes);

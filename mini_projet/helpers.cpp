@@ -50,3 +50,28 @@ void createSetters(ofstream *fichier, vector<string> attributes, string classNam
         }
     }
 }
+
+void createGettersPrototype(ofstream *fichier, vector<string> attributes, string className){
+    if(attributes.empty()){
+        *fichier << '\n';
+    }else{
+        for(string attribute: attributes){
+            *fichier << "\tint " << className << "::get" 
+            << firstMaj(attribute) << "() const;" << endl;
+        }
+        *fichier << endl;
+    }
+}
+
+void createSettersPrototype(ofstream *fichier, vector<string> attributes, string className){
+    if(attributes.empty()){
+        *fichier << '\n';
+    }else{
+        for(string attribute: attributes){
+            *fichier << "\tvoid " << className << "::set" 
+            << firstMaj(attribute) << "(int " 
+            << attribute
+            << "); "<<endl; 
+        }
+    }
+}
