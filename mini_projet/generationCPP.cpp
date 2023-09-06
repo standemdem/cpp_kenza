@@ -76,8 +76,22 @@ void generationCPP(string nom_fichier, vector<string> &attributes, vector<string
                             cin.ignore();
                             compteur++;
                             }
-                            else
-                                cout << "La variable : " << attribute << " a une mauvaise syntaxe - Variable non créee" << endl;
+                            else if(contientAccent(attribute)) {
+                        cout << "La variable numero : " << compteur_err << " contient un accent ! (cette variable est donc effacé)" << endl;
+                        cin.clear();
+                        cin.ignore();
+                    }
+                    else if(notExist(attribute,attributes)) {
+                        cout << "La variable : " << attribute << " a une mauvaise syntaxe - Variable non créée" << endl;
+                        cin.clear();
+                        cin.ignore();
+                    }                  
+                    else{
+                        cout << "La variable : " << attribute << " est déjà existante- Variable non créée" << endl;
+                        cin.clear();
+                        cin.ignore();
+                    }
+                    compteur_err++;
                     }
                 }
 
